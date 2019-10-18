@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modules>
+        <module>common</module>
+        <module>spring-boot-example</module>
+        <module>middleware-redis</module>
+        <module>middleware-mysql</module>
+        <module>middleware-mongodb</module>
+        <module>middleware-rabbitmq</module>
+        <module>middleware-emqx</module>
+        <module>middleware-influxdb</module>
+        <module>middleware-elasticsearch</module>
+    </modules>
+
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <groupId>com.purgeteam</groupId>
+    <artifactId>middleware-spring-boot-example</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>middleware-spring-boot-example</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
+        <spring-cloud-commons.version>2.1.2.RELEASE</spring-cloud-commons.version>
+        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+
+        <!-- jvm -->
+        <java.version>1.8</java.version>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.purgeteam</groupId>
+                <artifactId>common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <!-- Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Cloud Commons -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-commons-dependencies</artifactId>
+                <version>${spring-cloud-commons.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Alibaba Spring Cloud -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>
