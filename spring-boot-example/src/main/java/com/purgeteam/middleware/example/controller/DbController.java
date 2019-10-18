@@ -3,6 +3,8 @@ package com.purgeteam.middleware.example.controller;
 import com.purgeteam.middleware.common.User;
 import com.purgeteam.middleware.es.test.EsServiceImpl;
 import com.purgeteam.middleware.es.test.EsUser;
+import com.purgeteam.middleware.mongodb.test.MongoUser;
+import com.purgeteam.middleware.mongodb.test.MongodbServiceImpl;
 import com.purgeteam.middleware.mysql.test.MysqlServiceImpl;
 import com.purgeteam.middleware.redis.test.RedisServiceImpl;
 import lombok.AllArgsConstructor;
@@ -27,6 +29,9 @@ public class DbController {
     private RedisServiceImpl redisService;
 
     @Resource
+    private MongodbServiceImpl mongodbService;
+
+    @Resource
     private EsServiceImpl esService;
 
     @GetMapping("{type}/list")
@@ -37,7 +42,7 @@ public class DbController {
             case "redis":
                 return redisService.findUserAllList();
             case "mongodb":
-
+                return mongodbService.findUserAllList();
             case "influxdb":
 
             case "es":
@@ -55,7 +60,9 @@ public class DbController {
             case "redis":
                 return redisService.addUser(user);
             case "mongodb":
-
+                MongoUser mongoUser = new MongoUser();
+                BeanUtils.copyProperties(user, mongoUser);
+                return mongodbService.addUser(mongoUser);
             case "influxdb":
 
             case "es":

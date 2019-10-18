@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * @since 1.0
  */
 @Slf4j
+@Service
 public class MongodbServiceImpl implements UserService<MongoUser> {
 
     @Resource
@@ -21,7 +23,8 @@ public class MongodbServiceImpl implements UserService<MongoUser> {
 
     @Override
     public List<MongoUser> findUserAllList() {
-        Query query = Query.query(Criteria.where("dataStatus").is(1));
+//        Query query = Query.query(Criteria.where("dataStatus").is(1));
+        Query query = Query.query(new Criteria());
         List<MongoUser> users = this.mongoTemplate.find(query, MongoUser.class);
         return users;
     }
