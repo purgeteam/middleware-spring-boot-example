@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo-test
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-boot-example
+  namespace: demo-test
+  labels:
+    app: spring-boot-example
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+  selector:
+    app: spring-boot-example
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-example
+  namespace: demo-test
+  labels:
+    app: spring-boot-example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-example
+  template:
+    metadata:
+      labels:
+        app: spring-boot-example
+    spec:
+      containers:
+        - name: spring-boot-example
+          image: registry.cn-hangzhou.aliyuncs.com/engine/spring-boot-example:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APPLICATION_PROFILES
+              value: "prod"

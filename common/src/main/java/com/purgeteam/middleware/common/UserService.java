@@ -1,14 +1,11 @@
 package com.purgeteam.middleware.common;
 
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
  * @author purgeyao
  * @since 1.0
  */
-@Service
 public interface UserService<T> {
 
     /**
