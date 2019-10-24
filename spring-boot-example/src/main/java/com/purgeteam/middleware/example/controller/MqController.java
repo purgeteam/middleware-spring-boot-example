@@ -22,7 +22,7 @@ public class MqController {
     @Resource
     private RabbitmqProducerService rabbitmqProducerService;
 
-    @Autowired
+//    @Autowired
     private MqttServer mqttServer;
 
     @GetMapping("/{type}/{msg}")
