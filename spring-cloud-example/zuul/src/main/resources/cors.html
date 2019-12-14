@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-1.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#cors").click(function () {
+                $.ajax({
+                    url: "http://127.0.0.1:4000/health",
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            });
+            $("#cors1").click(function () {
+                $.ajax({
+                    url: "http://127.0.0.1:4000/user/health",
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            });
+            $("#cors2").click(function () {
+                $.ajax({
+                    url: "http://127.0.0.1:4000/user/user/findUser",
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" id="cors" value="CORS跨域测试api-gateway health">
+<input type="button" id="cors1" value="CORS跨域测试user服务 health">
+<input type="button" id="cors2" value="CORS跨域测试user服务 findUser">
+</body>
+</html>

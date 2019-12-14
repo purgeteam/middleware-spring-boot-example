@@ -12,6 +12,7 @@
         <module>middleware-emqx</module>
         <module>middleware-influxdb</module>
         <module>middleware-elasticsearch</module>
+      <module>spring-cloud-example</module>
     </modules>
 
     <modelVersion>4.0.0</modelVersion>
@@ -26,6 +27,7 @@
 
     <properties>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <spring-cloud-commons.version>2.1.2.RELEASE</spring-cloud-commons.version>
         <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
 
@@ -48,6 +50,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-parent</artifactId>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
